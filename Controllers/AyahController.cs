@@ -5,18 +5,18 @@ namespace Al_Maqraa.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class AyahController : ControllerBase
     {
-        private readonly UserService _service;
+        private readonly AyahService _service;
 
-        public UserController(UserService service)
+        public AyahController(AyahService service)
         {
             _service = service;
         }
 
-        // GET: api/User
+        // GET: api/Ayah
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<Ayah>>> GetAyah()
         {
             var user = await _service.GetAllAsync();
             if (user == null)
@@ -26,9 +26,9 @@ namespace Al_Maqraa.Controllers
             return user.ToList();
         }
 
-        // GET: api/User/5
+        // GET: api/Ayah/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public async Task<ActionResult<Ayah>> GetAyah(int id)
         {
             var user = await _service.GetAllAsync();
 
@@ -36,20 +36,20 @@ namespace Al_Maqraa.Controllers
             {
                 return NotFound();
             }
-            var User = await _service.GetByIdAsync(id);
-            if (User == null)
+            var Ayah = await _service.GetByIdAsync(id);
+            if (Ayah == null)
             {
                 return NotFound();
             }
 
-            return User;
+            return Ayah;
         }
 
-        // PUT: api/User/5
+        // PUT: api/Ayah/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User User)
+        public async Task<IActionResult> PutAyah(int id, Ayah Ayah)
         {
-            if (id != User.Id)
+            if (id != Ayah.Id)
             {
                 return BadRequest();
             }
@@ -57,11 +57,11 @@ namespace Al_Maqraa.Controllers
 
             try
             {
-                await _service.UpdateAsync(User);
+                await _service.UpdateAsync(Ayah);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await UserExistsAsync(id))
+                if (!await AyahExistsAsync(id))
                 {
                     return NotFound();
                 }
@@ -74,23 +74,24 @@ namespace Al_Maqraa.Controllers
             return NoContent();
         }
 
-        // POST: api/User
+        // POST: api/Ayah
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User User)
+        public async Task<ActionResult<Ayah>> PostAyah(Ayah Ayah)
         {
             var user = await _service.GetAllAsync();
 
             if (user == null)
             {
-                return Problem("Entity set 'User'  is null.");
+                return Problem("Entity set 'Ayah'  is null.");
             }
-            await _service.AddAsync(User);
-            return CreatedAtAction("GetUser", new { id = User.Id }, User);
+            await _service.AddAsync(Ayah);
+            return CreatedAtAction("GetAyah", new { id = Ayah.Id }, Ayah);
         }
 
-        // DELETE: api/User/5
+        // DELETE: api/Ayah/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        public async Task<IActionResult> DeleteAyah(int id)
         {
             var user = await _service.GetAllAsync();
 
@@ -99,17 +100,18 @@ namespace Al_Maqraa.Controllers
                 return NotFound();
             }
 
-            var User = await _service.GetByIdAsync(id);
-            if (User == null)
+            var Ayah = await _service.GetByIdAsync(id);
+            if (Ayah == null)
             {
                 return NotFound();
             }
-            await _service.DeleteAsync(User.Id);
+
+            await _service.DeleteAsync(Ayah.Id);
 
             return NoContent();
         }
 
-        private async Task<bool> UserExistsAsync(string id)
+        private async Task<bool> AyahExistsAsync(int id)
         {
             var users =  await _service.GetAllAsync();
 

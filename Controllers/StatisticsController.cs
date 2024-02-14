@@ -5,18 +5,18 @@ namespace Al_Maqraa.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class StatisticsController : ControllerBase
     {
-        private readonly UserService _service;
+        private readonly StatisticsService _service;
 
-        public UserController(UserService service)
+        public StatisticsController(StatisticsService service)
         {
             _service = service;
         }
 
-        // GET: api/User
+        // GET: api/Statistics
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<Statistics>>> GetStatistics()
         {
             var user = await _service.GetAllAsync();
             if (user == null)
@@ -26,9 +26,9 @@ namespace Al_Maqraa.Controllers
             return user.ToList();
         }
 
-        // GET: api/User/5
+        // GET: api/Statistics/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public async Task<ActionResult<Statistics>> GetStatistics(int id)
         {
             var user = await _service.GetAllAsync();
 
@@ -36,20 +36,20 @@ namespace Al_Maqraa.Controllers
             {
                 return NotFound();
             }
-            var User = await _service.GetByIdAsync(id);
-            if (User == null)
+            var Statistics = await _service.GetByIdAsync(id);
+            if (Statistics == null)
             {
                 return NotFound();
             }
 
-            return User;
+            return Statistics;
         }
 
-        // PUT: api/User/5
+        // PUT: api/Statistics/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User User)
+        public async Task<IActionResult> PutStatistics(int id, Statistics Statistics)
         {
-            if (id != User.Id)
+            if (id != Statistics.Id)
             {
                 return BadRequest();
             }
@@ -57,11 +57,11 @@ namespace Al_Maqraa.Controllers
 
             try
             {
-                await _service.UpdateAsync(User);
+                await _service.UpdateAsync(Statistics);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await UserExistsAsync(id))
+                if (!await StatisticsExistsAsync(id))
                 {
                     return NotFound();
                 }
@@ -74,23 +74,23 @@ namespace Al_Maqraa.Controllers
             return NoContent();
         }
 
-        // POST: api/User
+        // POST: api/Statistics
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User User)
+        public async Task<ActionResult<Statistics>> PostStatistics(Statistics Statistics)
         {
             var user = await _service.GetAllAsync();
 
             if (user == null)
             {
-                return Problem("Entity set 'User'  is null.");
+                return Problem("Entity set 'Statistics'  is null.");
             }
-            await _service.AddAsync(User);
-            return CreatedAtAction("GetUser", new { id = User.Id }, User);
+            await _service.AddAsync(Statistics);
+            return CreatedAtAction("GetStatistics", new { id = Statistics.Id }, Statistics);
         }
 
-        // DELETE: api/User/5
+        // DELETE: api/Statistics/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        public async Task<IActionResult> DeleteStatistics(int id)
         {
             var user = await _service.GetAllAsync();
 
@@ -99,17 +99,18 @@ namespace Al_Maqraa.Controllers
                 return NotFound();
             }
 
-            var User = await _service.GetByIdAsync(id);
-            if (User == null)
+            var Statistics = await _service.GetByIdAsync(id);
+            if (Statistics == null)
             {
                 return NotFound();
             }
-            await _service.DeleteAsync(User.Id);
+
+            await _service.DeleteAsync(Statistics.Id);
 
             return NoContent();
         }
 
-        private async Task<bool> UserExistsAsync(string id)
+        private async Task<bool> StatisticsExistsAsync(int id)
         {
             var users =  await _service.GetAllAsync();
 

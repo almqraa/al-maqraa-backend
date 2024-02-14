@@ -7,6 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<SurahService>();
+builder.Services.AddScoped<AyahService>();
+builder.Services.AddScoped<SheikhService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<StatisticsService>();
+builder.Services.AddScoped<AlMaqraaDB>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
