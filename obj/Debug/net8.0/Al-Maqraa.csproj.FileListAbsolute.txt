@@ -252,3 +252,4 @@ G:\GP\Al-Maqraa\obj\Debug\net8.0\refint\Al-Maqraa.dll
 G:\GP\Al-Maqraa\obj\Debug\net8.0\Al-Maqraa.pdb
 G:\GP\Al-Maqraa\obj\Debug\net8.0\Al-Maqraa.genruntimeconfig.cache
 G:\GP\Al-Maqraa\obj\Debug\net8.0\ref\Al-Maqraa.dll
+G:\GP\Al-Maqraa\obj\Debug\net8.0\Al-Maqraa.sourcelink.json

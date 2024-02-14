@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Al_Mqraa.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Oceantecsa.Infrastructure.IdentityServices;
 
-namespace OceantecsaAPI.Controllers
+namespace Al_Maqraa.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

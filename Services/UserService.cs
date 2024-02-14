@@ -1,18 +1,8 @@
-﻿using Al_Mqraa.Models;
-using CareerCareHub.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Oceantecsa.Infrastructure.IdentityServices
+﻿public class UserService : GenericRepository<User>
 {
-    public class UserService : GenericRepository<User>
+    public UserService(AlMaqraaDB context) : base(context)
     {
-        public UserService(AlMaqraaDB context) : base(context)
-        {
 
-        }
     }
 }
+

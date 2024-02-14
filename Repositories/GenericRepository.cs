@@ -1,6 +1,4 @@
-﻿using Al_Maqraa.Repositories;
-using CareerCareHub.Entity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
