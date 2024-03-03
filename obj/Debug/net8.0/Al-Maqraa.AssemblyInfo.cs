@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Al-Maqraa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3954bf9013eaf0924849593e440eae9714ffb26c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e5192ba3ffd2a13afdd8d4d37a20e88dc7c8934")]
 [assembly: System.Reflection.AssemblyProductAttribute("Al-Maqraa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Al-Maqraa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

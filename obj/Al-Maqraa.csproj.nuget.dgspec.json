@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\GP\\Al-Maqraa\\Al-Maqraa.csproj": {}
+    "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj": {}
   },
   "projects": {
-    "G:\\GP\\Al-Maqraa\\Al-Maqraa.csproj": {
+    "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\GP\\Al-Maqraa\\Al-Maqraa.csproj",
+        "projectUniqueName": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
         "projectName": "Al-Maqraa",
-        "projectPath": "G:\\GP\\Al-Maqraa\\Al-Maqraa.csproj",
+        "projectPath": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
         "packagesPath": "C:\\Users\\GEMY\\.nuget\\packages\\",
-        "outputPath": "G:\\GP\\Al-Maqraa\\obj\\",
+        "outputPath": "G:\\GP\\Backend\\Al-Maqraa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

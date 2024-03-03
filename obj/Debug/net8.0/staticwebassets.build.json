@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RSyOXCEOFgUzbg+Nfir4On7RPlW/vLuCBwuxRSdCefU=",
+  "Hash": "ocPGbTGhVmyR5+tXCoVndImkQCTP1GxQC5R9h1cE1zE=",
   "Source": "Al-Maqraa",
   "BasePath": "_content/Al-Maqraa",
   "Mode": "Default",
@@ -47,10 +47,10 @@
       "OriginalItemSpec": "C:\\Users\\GEMY\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "G:\\GP\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Al-Maqraa.styles.css",
+      "Identity": "G:\\GP\\Backend\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Al-Maqraa.styles.css",
       "SourceId": "Al-Maqraa",
       "SourceType": "Computed",
-      "ContentRoot": "G:\\GP\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "G:\\GP\\Backend\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Al-Maqraa",
       "RelativePath": "Al-Maqraa.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "G:\\GP\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Al-Maqraa.styles.css"
+      "OriginalItemSpec": "G:\\GP\\Backend\\Al-Maqraa\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Al-Maqraa.styles.css"
     }
   ]
 }

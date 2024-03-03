@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LCr/4PvXBfiK70D5IKC7bpXRZ7QhYqtN7X9IBbgerVeyf8GKJp0u/YGfTWwVQ+JTWMe8HedhgiMiYqRI9Nm/wg==",
+  "dgSpecHash": "I772m9Pe1aumUL+97OdlMUWUrMvDXJNLtWij4lFKTNS4vvHrxmOTyOwvEN7B9yqI5nTFMd0MulzTD/oNaypLzg==",
   "success": true,
-  "projectFilePath": "G:\\GP\\Al-Maqraa\\Al-Maqraa.csproj",
+  "projectFilePath": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GEMY\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\GEMY\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
