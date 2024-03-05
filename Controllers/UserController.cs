@@ -1,5 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Al_Maqraa.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using System.Data.Entity;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
+using System.Text;
 
 namespace Al_Maqraa.Controllers
 {
@@ -8,12 +16,78 @@ namespace Al_Maqraa.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _service;
-
-        public UserController(UserService service)
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        public UserController(SignInManager<User> signInManager, UserManager<User> userManager,UserService service)
         {
+            _signInManager = signInManager;
+            _userManager = userManager;
             _service = service;
         }
+    
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userModel = new User
+                {
+                    UserName = model.Name + Guid.NewGuid().ToString(),
+                    Name = model.Name,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Gender = model.Gender,
+                    Password = model.Password
+                };
+                if (await _userManager.FindByEmailAsync(model.Email) == null)
+                {
+                    userModel.EmailConfirmed = true;
+                    var result = await _userManager.CreateAsync(userModel, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(userModel, isPersistent: true);
+                        var token = await _userManager.GetAuthenticationTokenAsync(userModel, "JwtBearer", "access_token");
+                        return Ok(new { Token = token }); 
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
 
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Email Is Already Exist!");
+
+                }
+            }
+            return BadRequest(ModelState);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    var token = await _userManager.GetAuthenticationTokenAsync(user, "JwtBearer", "access_token");
+                    return Ok(new { Token = token });
+                }
+               
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong Email or Password .");
+                }
+            }
+
+            return BadRequest(model);
+        }
         // GET: api/User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
