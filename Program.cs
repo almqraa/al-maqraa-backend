@@ -41,12 +41,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapIdentityApi<User>();
+app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapIdentityApi<User>();
-app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
 
 app.Run();
