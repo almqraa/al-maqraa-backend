@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Al_Maqraa.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -25,30 +25,35 @@ namespace Al_Maqraa.Controllers
             _service = service;
         }
     
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var userModel = new User
                 {
-                    UserName = model.Name + Guid.NewGuid().ToString(),
-                    Name = model.Name,
+                    UserName = model.Name.Replace(" ", "") + Guid.NewGuid().ToString(),
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     Gender = model.Gender,
-                    Password = model.Password
                 };
                 if (await _userManager.FindByEmailAsync(model.Email) == null)
                 {
                     userModel.EmailConfirmed = true;
-                    var result = await _userManager.CreateAsync(userModel, model.Password);
+                    var result = await _userManager.CreateAsync(userModel, model.Password);//sign up
                     if (result.Succeeded)
                     {
-                        await _signInManager.SignInAsync(userModel, isPersistent: true);
-                        var token = await _userManager.GetAuthenticationTokenAsync(userModel, "JwtBearer", "access_token");
-                        return Ok(new { Token = token }); 
+                        //login
+                        var sign = await _signInManager.PasswordSignInAsync(userModel.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
+                        if (sign.Succeeded)
+                        {
+                            return Ok();
+                        }
+                        else
+                        {
+                            // Log or handle the case where sign-in fails
+                            return BadRequest("Invalid username or password");
+                        }
                     }
                     foreach (var error in result.Errors)
                     {
@@ -65,7 +70,7 @@ namespace Al_Maqraa.Controllers
             return BadRequest(ModelState);
 
         }
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
 
@@ -76,8 +81,6 @@ namespace Al_Maqraa.Controllers
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
                     await _signInManager.SignInAsync(user, isPersistent: true);
-                    var token = await _userManager.GetAuthenticationTokenAsync(user, "JwtBearer", "access_token");
-                    return Ok(new { Token = token });
                 }
                
                 else
@@ -86,7 +89,7 @@ namespace Al_Maqraa.Controllers
                 }
             }
 
-            return BadRequest(model);
+            return BadRequest(ModelState);
         }
         // GET: api/User
         [HttpGet]

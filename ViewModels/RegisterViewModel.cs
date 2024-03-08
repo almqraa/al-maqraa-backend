@@ -7,10 +7,7 @@
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public int Gender { get; set; }
-        public RegisterViewModel()
-        {
-
-        }
+   
 
     }
 }

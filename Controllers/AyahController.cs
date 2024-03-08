@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Al_Maqraa.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AyahController : ControllerBase
     {

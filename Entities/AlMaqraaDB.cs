@@ -11,7 +11,7 @@ public class AlMaqraaDB : IdentityDbContext<User>
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("User ID =postgres;Password=1234;Server=localhost;Port=5432;Database=postgres; Pooling = true; ");
+        optionsBuilder.UseNpgsql("User ID =postgres;Password=1234;Server=localhost;Port=5432;Database=gamal; Pooling = true; ");
         //optionsBuilder.UseNpgsql("User ID =postgres;Password=123456;Server=localhost;Port=5432;Database=CareerCareHub;Integrated Security = true; Pooling = true; ");
         base.OnConfiguring(optionsBuilder);
     }
