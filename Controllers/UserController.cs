@@ -44,16 +44,8 @@ namespace Al_Maqraa.Controllers
                     if (result.Succeeded)
                     {
                         //login
-                        var sign = await _signInManager.PasswordSignInAsync(userModel.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
-                        if (sign.Succeeded)
-                        {
-                            return Ok();
-                        }
-                        else
-                        {
-                            // Log or handle the case where sign-in fails
-                            return BadRequest("Invalid username or password");
-                        }
+                        await _signInManager.SignInAsync(userModel, isPersistent: true);
+                        return Ok();
                     }
                     foreach (var error in result.Errors)
                     {
@@ -80,7 +72,7 @@ namespace Al_Maqraa.Controllers
 
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    await _signInManager.PasswordSignInAsync(user, model.Password,isPersistent:true,lockoutOnFailure:false);
                     return Ok();
                 }
                
