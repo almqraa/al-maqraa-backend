@@ -18,18 +18,21 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<StatisticsService>();
 
 
-builder.Services.AddIdentityCore<User>().AddEntityFrameworkStores<AlMaqraaDB>().AddApiEndpoints();
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AlMaqraaDB>()
+    .AddApiEndpoints()
     .AddSignInManager<SignInManager<User>>()
     .AddUserManager<UserManager<User>>().AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
-builder.Services.AddAuthorizationBuilder();
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+app.MapIdentityApi<User>();
+app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
 
 
 // Configure the HTTP request pipeline.
@@ -43,10 +46,7 @@ app.UseHttpsRedirection();
 
 
 
-app.MapIdentityApi<User>();
-app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
-app.UseAuthentication();
-app.UseAuthorization();
+
 
 app.MapControllers();
 
