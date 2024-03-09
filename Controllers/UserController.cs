@@ -81,6 +81,7 @@ namespace Al_Maqraa.Controllers
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
                     await _signInManager.SignInAsync(user, isPersistent: true);
+                    return Ok();
                 }
                
                 else

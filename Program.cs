@@ -24,7 +24,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddSignInManager<SignInManager<User>>()
     .AddUserManager<UserManager<User>>().AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.ApplicationScheme);
+builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 
@@ -45,7 +45,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 
 app.MapControllers();
