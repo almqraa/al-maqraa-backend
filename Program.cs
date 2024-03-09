@@ -24,7 +24,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddSignInManager<SignInManager<User>>()
     .AddUserManager<UserManager<User>>().AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.ApplicationScheme);
 builder.Services.AddAuthorization();
 
 
