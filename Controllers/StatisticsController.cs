@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Al_Maqraa.DTO;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+//using System.Data.Entity;
 
 namespace Al_Maqraa.Controllers
 {
@@ -8,7 +11,7 @@ namespace Al_Maqraa.Controllers
     public class StatisticsController : ControllerBase
     {
         private readonly StatisticsService _service;
-
+      
         public StatisticsController(StatisticsService service)
         {
             _service = service;
@@ -47,17 +50,20 @@ namespace Al_Maqraa.Controllers
 
         // PUT: api/Statistics/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStatistics(int id, Statistics Statistics)
+        public async Task<IActionResult> PutStatistics(int id, StatisticsDTO statisticsDTO)
         {
-            if (id != Statistics.Id)
+            Statistics statistics = await _service.GetByIdAsync(id);
+            if (statistics==null)
             {
                 return BadRequest();
             }
-
-
             try
             {
-                await _service.UpdateAsync(Statistics);
+                statistics.Bookmark = statisticsDTO.Bookmark ?? statistics.Bookmark;
+                statistics.DayStreak = statisticsDTO.DayStreak ?? statistics.DayStreak;
+                statistics.LastRead = statisticsDTO.LastRead ?? statistics.LastRead;
+                statistics.TotalReadingTime = statisticsDTO.TotalReadingTime ?? statistics.TotalReadingTime;
+                await _service.UpdateAsync(statistics);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -115,6 +121,21 @@ namespace Al_Maqraa.Controllers
             var users =  await _service.GetAllAsync();
 
             return (users?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpGet("user/{statisticId}")]
+        public async Task<IActionResult> GetUserByStatisticId(int statisticId)
+        {
+  
+            // Retrieve the user associated with the statistic
+             var user = await _service.GetUserByStatisticId(statisticId);
+            //Statistics statistic = await _context.Statistics.Include(s =>s.User).FirstOrDefaultAsync(ss =>ss.Id==statisticId);
+            //var user = statistic.User;
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(user);
         }
     }
 }

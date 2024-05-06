@@ -1,6 +1,6 @@
-﻿namespace Al_Maqraa.ViewModels
+﻿namespace Al_Maqraa.DTO
 {
-    public class RegisterViewModel
+    public class RegisterDTO
     {
         public string Name { get; set; }
         public string Email { get; set; }

@@ -16,6 +16,7 @@ builder.Services.AddScoped<AyahService>();
 builder.Services.AddScoped<SheikhService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<StatisticsService>();
+builder.Services.AddScoped<DayService>();
 
 
 builder.Services.AddIdentity<User, IdentityRole>()

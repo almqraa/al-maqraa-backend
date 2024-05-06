@@ -1,10 +1,9 @@
-﻿using Al_Maqraa.ViewModels;
+﻿using Al_Maqraa.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using System.Data.Entity;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
 using System.Text;
@@ -26,12 +25,13 @@ namespace Al_Maqraa.Controllers
         }
     
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterDTO model)
         {
             if (ModelState.IsValid)
             {
                 var userModel = new User
                 {
+                    Name = model.Name,
                     UserName = model.Name.Replace(" ", "") + Guid.NewGuid().ToString(),
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
@@ -63,7 +63,7 @@ namespace Al_Maqraa.Controllers
 
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginDTO model)
         {
 
             if (ModelState.IsValid)
@@ -117,9 +117,10 @@ namespace Al_Maqraa.Controllers
 
         // PUT: api/User/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User User)
+        public async Task<IActionResult> PutUser(string id, UserDTO userDTO)
         {
-            if (id != User.Id)
+            User user = await _userManager.FindByIdAsync(id);
+            if (user==null)
             {
                 return BadRequest();
             }
@@ -127,7 +128,10 @@ namespace Al_Maqraa.Controllers
 
             try
             {
-                await _service.UpdateAsync(User);
+                user.Name = userDTO.Name ?? user.Name;
+                user.PhoneNumber = userDTO.PhoneNumber ?? user.PhoneNumber;
+                user.Gender = userDTO.Gender ?? user.Gender;
+                await _service.UpdateAsync(user);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -184,6 +188,21 @@ namespace Al_Maqraa.Controllers
             var users =  await _service.GetAllAsync();
 
             return (users?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpGet("statistics/{userId}")]
+        public async Task<IActionResult> GetStatisticByUserId(string userId)
+        {
+
+            // Retrieve the user associated with the statistic
+            var satistic = await _service.GetStatisticByUserId(userId);
+            //Statistics statistic = await _context.Statistics.Include(s =>s.User).FirstOrDefaultAsync(ss =>ss.Id==statisticId);
+            //var user = statistic.User;
+            if (satistic == null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(satistic);
         }
     }
 }
