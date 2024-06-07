@@ -12,7 +12,6 @@ builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-<<<<<<< HEAD
 builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
 {
@@ -23,8 +22,6 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
-=======
->>>>>>> b5cee9870e47090a4a6a1272854165066e074528
 
 builder.Services.AddScoped<AlMaqraaDB>();
 builder.Services.AddScoped<SurahService>();

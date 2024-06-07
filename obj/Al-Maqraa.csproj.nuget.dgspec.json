@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GP\\BackEnd\\al-maqraa-backend\\Al-Maqraa.csproj": {}
+    "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj": {}
   },
   "projects": {
-    "F:\\GP\\BackEnd\\al-maqraa-backend\\Al-Maqraa.csproj": {
+    "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GP\\BackEnd\\al-maqraa-backend\\Al-Maqraa.csproj",
+        "projectUniqueName": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
         "projectName": "Al-Maqraa",
-        "projectPath": "F:\\GP\\BackEnd\\al-maqraa-backend\\Al-Maqraa.csproj",
-        "packagesPath": "C:\\Users\\sigma\\.nuget\\packages\\",
-        "outputPath": "F:\\GP\\BackEnd\\al-maqraa-backend\\obj\\",
+        "projectPath": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
+        "packagesPath": "C:\\Users\\GEMY\\.nuget\\packages\\",
+        "outputPath": "G:\\GP\\Backend\\Al-Maqraa\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\sigma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GEMY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,51 +55,51 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.19.6, )"
+              "version": "[1.20.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -116,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
