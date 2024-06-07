@@ -1,3 +1,4 @@
+using Al_Maqraa.Services;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
@@ -6,10 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+<<<<<<< HEAD
 builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
 {
@@ -20,6 +23,8 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+=======
+>>>>>>> b5cee9870e47090a4a6a1272854165066e074528
 
 builder.Services.AddScoped<AlMaqraaDB>();
 builder.Services.AddScoped<SurahService>();
@@ -27,6 +32,8 @@ builder.Services.AddScoped<AyahService>();
 builder.Services.AddScoped<SheikhService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<StatisticsService>();
+builder.Services.AddScoped<DayService>();
+builder.Services.AddScoped<SpeechToTextService>();
 
 
 builder.Services.AddIdentity<User, IdentityRole>()

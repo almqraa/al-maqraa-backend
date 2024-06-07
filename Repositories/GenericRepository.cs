@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {
-    private readonly AlMaqraaDB _context;
+    protected AlMaqraaDB _context;
     private readonly DbSet<TEntity> _dbSet;
 
     public GenericRepository(AlMaqraaDB context)
