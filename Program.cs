@@ -31,7 +31,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<StatisticsService>();
 builder.Services.AddScoped<DayService>();
 builder.Services.AddScoped<SpeechToTextService>();
-
+builder.Services.AddSingleton<QuranService>();
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AlMaqraaDB>()

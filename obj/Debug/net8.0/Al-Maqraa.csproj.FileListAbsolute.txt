@@ -863,3 +863,4 @@ F:\GP\BackEnd\al-maqraa-backend\obj\Debug\net8.0\refint\Al-Maqraa.dll
 F:\GP\BackEnd\al-maqraa-backend\obj\Debug\net8.0\Al-Maqraa.pdb
 F:\GP\BackEnd\al-maqraa-backend\obj\Debug\net8.0\Al-Maqraa.genruntimeconfig.cache
 F:\GP\BackEnd\al-maqraa-backend\obj\Debug\net8.0\ref\Al-Maqraa.dll
+G:\GP\Backend\Al-Maqraa\bin\Debug\net8.0\Data\Quran.json

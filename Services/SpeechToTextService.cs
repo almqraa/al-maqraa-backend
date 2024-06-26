@@ -10,8 +10,10 @@ namespace Al_Maqraa.Services
         private readonly HttpClient _httpClient;
         private readonly string _pythonApiUrl;
 
-        public SpeechToTextService(HttpClient httpClient, string pythonApiUrl= "http://127.0.0.1:5000/api/speech-to-text")
+        public SpeechToTextService(HttpClient httpClient, string pythonApiUrl= "http://84e6-197-133-157-191.ngrok-free.app/api/speech-to-text")
         {
+
+            //connection will be opened here with socket flask
             _httpClient = httpClient;
             _pythonApiUrl = pythonApiUrl;
         }
@@ -38,7 +40,7 @@ namespace Al_Maqraa.Services
                 string result = await response.Content.ReadAsStringAsync();
                 var responseObject = JsonSerializer.Deserialize<SpeechToTextResponse>(result);
                 string text = responseObject?.text ?? "";
-                return text;
+                return text+ "Hamada!";
             }
             else
             {

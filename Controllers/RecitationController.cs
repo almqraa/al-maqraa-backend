@@ -9,12 +9,18 @@ namespace Al_Maqraa.Controllers
     public class RecitationController : ControllerBase
     {
         private readonly SpeechToTextService _speechToTextService;
+        private readonly QuranService _quranService;
 
-        public RecitationController(SpeechToTextService speechToTextService)
+        public RecitationController(SpeechToTextService speechToTextService, QuranService quranService)
         {
             _speechToTextService = speechToTextService;
+            _quranService = quranService;
         }
-
+        [HttpGet("surah")]
+        public ActionResult<List<Surah>?> GetAyahs()
+        {
+            return _quranService._quranData;
+        }
         [HttpPost("recite")]
         public async Task<IActionResult> ReciteFromAudio([FromBody] string audioData)
         {

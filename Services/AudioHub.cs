@@ -1,14 +1,21 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Al_Maqraa.Services;
+using Microsoft.AspNetCore.SignalR;
 using System.Drawing.Printing;
+using System.Net.Http;
+using System.Security.Policy;
+using System.Text;
 using System.Threading.Tasks;
 
 public class AudioHub : Hub
 {
+    public readonly SpeechToTextService _speechToTextService;
+    public AudioHub(SpeechToTextService speechToTextService)
+    {
+        _speechToTextService = speechToTextService;
+    }
     public async Task<string> SendMessage(string message)
     {
-        await Clients.All.SendAsync("ReceiveMessage", message);
-        
-        return $"{message} received!";
+        return await _speechToTextService.ConvertToText(message);
     }
     public override async Task OnConnectedAsync()
     {

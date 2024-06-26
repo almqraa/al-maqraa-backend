@@ -1,8 +1,8 @@
 ﻿
     public class Surah
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public virtual List<Ayah>? Ayat { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public List<Ayah> array { get; set; }
     }
 
