@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\GP\\BackEnd\\al-maqraa-backend\\wwwroot\\EmailConfirm.html",
+      "PackagePath": "staticwebassets\\EmailConfirm.html"
+    },
+    {
+      "Id": "F:\\GP\\BackEnd\\al-maqraa-backend\\wwwroot\\ResetPassword.html",
+      "PackagePath": "staticwebassets\\ResetPassword.html"
+    },
+    {
+      "Id": "F:\\GP\\BackEnd\\al-maqraa-backend\\wwwroot\\test.html",
+      "PackagePath": "staticwebassets\\test.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Al-Maqraa.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Al-Maqraa.props",
+      "PackagePath": "build\\Al-Maqraa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Al-Maqraa.props",
+      "PackagePath": "buildMultiTargeting\\Al-Maqraa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Al-Maqraa.props",
+      "PackagePath": "buildTransitive\\Al-Maqraa.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -17,11 +17,15 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Al_Maqraa
 build_property.RootNamespace = Al_Maqraa
-build_property.ProjectDir = G:\GP\Backend\Al-Maqraa\
+build_property.ProjectDir = F:\GP\BackEnd\al-maqraa-backend\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = G:\GP\Backend\Al-Maqraa
+build_property.MSBuildProjectDirectory = F:\GP\BackEnd\al-maqraa-backend
 build_property._RazorSourceGeneratorDebug = 
+
+[F:/GP/BackEnd/al-maqraa-backend/Views/User/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

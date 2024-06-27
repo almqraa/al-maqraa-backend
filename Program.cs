@@ -1,3 +1,4 @@
+using Al_Maqraa;
 using Al_Maqraa.Services;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -22,6 +23,7 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<AlMaqraaDB>();
 builder.Services.AddScoped<SurahService>();
@@ -42,6 +44,8 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
+builder.Services.AddControllersWithViews(); 
+builder.Services.AddRazorPages(); // Add if using Razor Pages
 
 var app = builder.Build();
 
