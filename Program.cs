@@ -78,6 +78,11 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 
     endpoints.MapHub<AudioHub>("/recitations");
+    endpoints.MapGet("/", context =>
+    {
+        context.Response.Redirect("/home");
+        return Task.CompletedTask;
+    });
 });
 
 app.Run();
