@@ -1,0 +1,81 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\EmailConfirm.html",
+      "PackagePath": "staticwebassets\\EmailConfirm.html"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\ResetPassword.html",
+      "PackagePath": "staticwebassets\\ResetPassword.html"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\Media1.mp4",
+      "PackagePath": "staticwebassets\\assets\\Media1.mp4"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\Omar1.jpeg",
+      "PackagePath": "staticwebassets\\assets\\Omar1.jpeg"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\favicon.ico",
+      "PackagePath": "staticwebassets\\assets\\favicon.ico"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\img\\app-store-badge.svg",
+      "PackagePath": "staticwebassets\\assets\\img\\app-store-badge.svg"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\img\\demo-screen.mp4",
+      "PackagePath": "staticwebassets\\assets\\img\\demo-screen.mp4"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\img\\google-play-badge.svg",
+      "PackagePath": "staticwebassets\\assets\\img\\google-play-badge.svg"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\img\\portrait_black.png",
+      "PackagePath": "staticwebassets\\assets\\img\\portrait_black.png"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\img\\tnw-logo.svg",
+      "PackagePath": "staticwebassets\\assets\\img\\tnw-logo.svg"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\assets\\logo.png",
+      "PackagePath": "staticwebassets\\assets\\logo.png"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\css\\ourteam.css",
+      "PackagePath": "staticwebassets\\css\\ourteam.css"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\js\\scripts.js"
+    },
+    {
+      "Id": "G:\\GP\\Backend\\Al-Maqraa\\wwwroot\\test.html",
+      "PackagePath": "staticwebassets\\test.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Al-Maqraa.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Al-Maqraa.props",
+      "PackagePath": "build\\Al-Maqraa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Al-Maqraa.props",
+      "PackagePath": "buildMultiTargeting\\Al-Maqraa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Al-Maqraa.props",
+      "PackagePath": "buildTransitive\\Al-Maqraa.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

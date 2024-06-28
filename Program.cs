@@ -1,3 +1,4 @@
+using Al_Maqraa;
 using Al_Maqraa.Services;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -6,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
+builder.Services.AddRazorPages(); // Add if using Razor Pages
 builder.Services.AddHttpClient();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -22,6 +25,7 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<AlMaqraaDB>();
 builder.Services.AddScoped<SurahService>();
@@ -41,7 +45,6 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
-
 
 var app = builder.Build();
 
@@ -68,11 +71,13 @@ app.UseCors("AllowAll");
 
 app.UseEndpoints(endpoints =>
 {
+    app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
     endpoints.MapControllers();
+
     endpoints.MapHub<AudioHub>("/recitations");
 });
-
-app.MapControllers();
-
 
 app.Run();
