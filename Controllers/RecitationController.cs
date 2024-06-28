@@ -48,5 +48,6 @@ namespace Al_Maqraa.Controllers
             // For simplicity, let's assume it always returns true for now
             return true;
         }
+        //hamada
     }
 }
