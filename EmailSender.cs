@@ -17,13 +17,16 @@ namespace Al_Maqraa
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var apiKey = _configuration["SendGrid:ApiKey"];
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var senderEmail = Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL");
+            var senderName = Environment.GetEnvironmentVariable("SENDGRID_SENDERNAME");
+
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress(_configuration["SendGrid:SenderEmail"], _configuration["SendGrid:SenderName"]);
+            var from = new EmailAddress(senderEmail, senderName);
             var to = new EmailAddress(email);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlMessage);
 
-            var response = await client.SendEmailAsync(msg);
+            await client.SendEmailAsync(msg);
         }
     }
 }
