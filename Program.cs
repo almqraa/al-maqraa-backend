@@ -50,7 +50,7 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 app.MapIdentityApi<User>();
-app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
+//app.MapGet("/", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
 
 
 // Configure the HTTP request pipeline.
