@@ -77,9 +77,9 @@ namespace Al_Maqraa.Controllers
                         await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
                             $"Welcome to AL-Maqraa\nYou're about to use the website just click on the link to confirm your email!" +
                             $"\nPlease confirm your account by clicking this <a href='{confirmationLink}'>link</a>.");
-                    
+                        await _signInManager.PasswordSignInAsync(userModel, model.Password, isPersistent: true, lockoutOnFailure: false);
                         //login
-                      //  await _signInManager.SignInAsync(userModel, isPersistent: true);
+                        //  await _signInManager.SignInAsync(userModel, isPersistent: true);
                         return Ok("Registration successful. Please check your email to confirm your account.");
                     }
                     foreach (var error in result.Errors)
