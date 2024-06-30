@@ -287,5 +287,20 @@ namespace Al_Maqraa.Controllers
 
             return Ok(satistic);
         }
+        [HttpGet("Days/{userId}")]
+        public async Task<IActionResult> GetDaysByUserId(string userId)
+        {
+
+            //Retrieve the user associated with the statistic
+             var Days = await _service.GetDaysByUserId(userId);
+            //Statistics statistic = await _context.Statistics.Include(s =>s.User).FirstOrDefaultAsync(ss =>ss.Id==statisticId);
+            //var user = statistic.User;
+            if (Days == null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(Days);
+        }
     }
 }

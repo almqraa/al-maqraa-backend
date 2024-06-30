@@ -131,7 +131,7 @@ namespace Al_Maqraa.Controllers
 
             return (days?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        [HttpGet("user/{statisticId}")]
+        [HttpGet("user/{dayId}")]
         public async Task<IActionResult> GetUserByDayId(int dayId)
         {
   
