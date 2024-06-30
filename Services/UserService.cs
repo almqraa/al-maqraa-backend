@@ -18,5 +18,17 @@ public class UserService : GenericRepository<User>
 
         return statistics;
     }
+    public async Task<List<Day>> GetDaysByUserId(string userId)
+    {
+        // Retrieve the statistic by ID
+        User user = await _context.Users
+        .Include(s => s.Days)
+        .FirstOrDefaultAsync(ss => ss.Id == userId);
+
+        // Retrieve the user associated with the statistic
+        List<Day> days = user.Days;
+
+        return days;
+    }
 }
 
