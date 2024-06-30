@@ -78,9 +78,10 @@ namespace Al_Maqraa.Controllers
                             $"Welcome to AL-Maqraa\nYou're about to use the website just click on the link to confirm your email!" +
                             $"\nPlease confirm your account by clicking this <a href='{confirmationLink}'>link</a>.");
                         await _signInManager.PasswordSignInAsync(userModel, model.Password, isPersistent: true, lockoutOnFailure: false);
+                        return Ok(userModel);
                         //login
                         //  await _signInManager.SignInAsync(userModel, isPersistent: true);
-                        return Ok("Registration successful. Please check your email to confirm your account.");
+                        //return Ok("Registration successful. Please check your email to confirm your account.");
                     }
                     foreach (var error in result.Errors)
                     {
@@ -108,7 +109,7 @@ namespace Al_Maqraa.Controllers
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password) && user.EmailConfirmed)
                 {
                     await _signInManager.PasswordSignInAsync(user, model.Password,isPersistent:true,lockoutOnFailure:false);
-                    return Ok();
+                    return Ok(user);
                 }
                 else if(user == null)
                 {
