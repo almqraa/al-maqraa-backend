@@ -283,7 +283,7 @@ namespace Al_Maqraa.Controllers
             //var user = statistic.User;
             if (satistic == null)
             {
-                return NotFound("User not found");
+                return NotFound("Satistic of User not found");
             }
 
             return Ok(satistic);
@@ -298,7 +298,7 @@ namespace Al_Maqraa.Controllers
             //var user = statistic.User;
             if (Days == null)
             {
-                return NotFound("User not found");
+                return NotFound("Day of User not found");
             }
 
             return Ok(Days);

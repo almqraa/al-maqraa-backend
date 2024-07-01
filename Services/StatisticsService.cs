@@ -20,4 +20,21 @@ public class StatisticsService : GenericRepository<Statistics>
 
         return user;
     }
+    public async Task<Statistics?> CheckStatisticsByUserId(string userId)
+    {
+       
+        // Retrieve the statistic by ID
+        User user = await _context.Users
+       .Include(s => s.Statistics)
+       .FirstOrDefaultAsync(ss => ss.Id == userId);
+
+        Statistics statistics = user?.Statistics;
+
+        if (statistics == null)
+        {
+            return null;
+        }
+        return statistics;
+
+    }
 }

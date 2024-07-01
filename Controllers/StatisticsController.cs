@@ -62,7 +62,7 @@ namespace Al_Maqraa.Controllers
                 statistics.Bookmark = statisticsDTO.Bookmark ?? statistics.Bookmark;
                 statistics.DayStreak = statisticsDTO.DayStreak ?? statistics.DayStreak;
                 statistics.LastRead = statisticsDTO.LastRead ?? statistics.LastRead;
-                statistics.TotalReadingTime = statisticsDTO.TotalReadingTime ?? statistics.TotalReadingTime;
+                if (statisticsDTO.TotalReadingTime != null) statistics.TotalReadingTime += statisticsDTO.TotalReadingTime;
                 await _service.UpdateAsync(statistics);
             }
             catch (DbUpdateConcurrencyException)
@@ -82,7 +82,7 @@ namespace Al_Maqraa.Controllers
 
         // POST: api/Statistics
         [HttpPost]
-        public async Task<ActionResult<Statistics>> PostStatistics(Statistics Statistics)
+        public async Task<ActionResult<Statistics>> PostStatistics(Statistics statistics)
         {
             var user = await _service.GetAllAsync();
 
@@ -90,8 +90,16 @@ namespace Al_Maqraa.Controllers
             {
                 return Problem("Entity set 'Statistics'  is null.");
             }
-            await _service.AddAsync(Statistics);
-            return CreatedAtAction("GetStatistics", new { id = Statistics.Id }, Statistics);
+            string userId = statistics.UserId;
+            Statistics? userStatistics = await _service.CheckStatisticsByUserId(userId);
+            if (userStatistics != null)
+            {
+                userStatistics.TotalReadingTime += statistics.TotalReadingTime;
+                await _service.UpdateAsync(userStatistics);
+                return Content("Statistics Updated");
+            }
+            await _service.AddAsync(statistics);
+            return CreatedAtAction("GetStatistics", new { id = statistics.Id }, statistics);
         }
 
         // DELETE: api/Statistics/5
