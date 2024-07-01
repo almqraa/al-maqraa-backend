@@ -91,7 +91,7 @@ namespace Al_Maqraa.Controllers
                 return Problem("Entity set 'Day'  is null.");
             }
             string userId = Day.UserId;
-            Day userDay = await _service.CheckDayByUserId(userId);
+            Day? userDay = await _service.CheckDayByUserId(userId);
             if (userDay != null)
             {
                 userDay.Score += Day.Score;

@@ -20,7 +20,7 @@ public class DayService : GenericRepository<Day>
 
         return user;
     }
-    public async Task<Day> CheckDayByUserId(string userId)
+    public async Task<Day?> CheckDayByUserId(string userId)
     {
         var today = DateOnly.FromDateTime(DateTime.Now);
         // Retrieve the statistic by ID
@@ -30,7 +30,7 @@ public class DayService : GenericRepository<Day>
 
         List<Day> days = user.Days?.ToList();
       
-        var day = days.FirstOrDefault(d => d.Date==today);
+        Day? day = days?.FirstOrDefault(d => d.Date==today);
         if (day == null)
         {
             return null;
