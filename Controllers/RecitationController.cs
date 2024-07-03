@@ -1,6 +1,9 @@
-﻿using Al_Maqraa.Services;
+﻿using Al_Maqraa.DTO;
+using Al_Maqraa.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 
 namespace Al_Maqraa.Controllers
 {
@@ -10,7 +13,32 @@ namespace Al_Maqraa.Controllers
     {
         private readonly SpeechToTextService _speechToTextService;
         private readonly QuranService _quranService;
-
+        private static readonly HttpClient client = new HttpClient();
+        private const string API_URL = "https://api-inference.huggingface.co/models/tarteel-ai/whisper-base-ar-quran";
+        public static string API_TOKEN = Environment.GetEnvironmentVariable("API_TOKEN"); // Replace with your actual token
+        public HashSet<char> arabicCharacters = new HashSet<char>
+        {
+            'ء', 'آ', 'أ', 'ؤ', 'إ', 'ئ', 'ا', 'ب', 'ة', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز',
+            'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ى', 'ي'
+        };
+        public Dictionary<char, char> tashkelMap = new Dictionary<char, char>
+        {
+            { 'ٱ','ا' }, //alph wasl -->alph wasl
+            { 'ً', 'ً' }, // Tanween Fat'h
+            { 'ٌ', 'ٌ' }, // Tanween Dham
+            { 'ٞ','ٌ' }, // Tanween Dham second
+            { 'ٍ', 'ٍ' }, // Tanween Kaser
+            { 'َ', 'َ' }, // Fat'ha
+            { 'ُ', 'ُ' }, // Dhamma
+            { 'ِ', 'ِ' }, // Kasra
+            { 'ّ', 'ّ' }, // Shadda
+            { 'ْ', 'ْ' }, // Sekoon
+            { 'ۡ', 'ْ' }, // Sekoon in quran -->sekoon
+            { 'ٰ', 'ا' }, // small alph --> alph wasl
+            { 'ۥ', 'ُ' }, // Small Waw --->dhamma
+            { 'ۦ', 'ِ' }, // Small Yaa-->kasra 
+            { 'ٔ','أ' }, //small hamza --> أ
+        };
         public RecitationController(SpeechToTextService speechToTextService, QuranService quranService)
         {
             _speechToTextService = speechToTextService;
@@ -21,18 +49,30 @@ namespace Al_Maqraa.Controllers
         {
             return _quranService._quranData;
         }
+      
         [HttpPost("recite")]
-        public async Task<IActionResult> ReciteFromAudio([FromBody] string audioData)
+        public async Task<IActionResult> ReciteFromAudio(ReciteDTO reciteDTO)
         {
             try
             {
-                // Convert audio data to text
-                string convertedText = await _speechToTextService.ConvertToText(audioData);
+                // Decode base64 string to binary data
+                byte[] audioBytes = Convert.FromBase64String(reciteDTO.Base64);
+
+                // Send the binary data to the Huggingface API
+                var response = await SendToHuggingfaceApi(audioBytes);
+                if (response == null)
+                {
+                    return StatusCode(500, "An error occurred while processing the audioo.");
+                }
+
+                // Extract text from the response
+                string convertedText = response["text"]?.ToString();
 
                 // Check the converted text against the Quranic text
-                bool isMatching = CheckAgainstQuranicText(convertedText);
+                MistakeDTO matchingWords = CheckAgainstQuranicText(convertedText,reciteDTO.SurahNum,reciteDTO.ayahNum);
 
-                return Ok(new { Text = convertedText, IsMatching = isMatching });
+                //return Ok(new { Text = convertedText, IsMatching = isMatching ,Size=isMatching.Length });
+                return Ok(matchingWords);
             }
             catch (Exception ex)
             {
@@ -41,13 +81,85 @@ namespace Al_Maqraa.Controllers
             }
         }
 
-        private bool CheckAgainstQuranicText(string text)
+        private async Task<JObject?> SendToHuggingfaceApi(byte[] audioBytes)
         {
-            // Implement logic to check text against Quranic text
-            // This logic will depend on your specific requirements
-            // For simplicity, let's assume it always returns true for now
-            return true;
+            using (var content = new ByteArrayContent(audioBytes))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("audio/flac");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_TOKEN);
+
+                var response = await client.PostAsync(API_URL, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    return JObject.Parse(responseString);
+                }
+                return null;
+            }
         }
-        //hamada
+        private string FilterAyah(string originalAyah) {
+            string filteredAyah="";
+            foreach(char ch in originalAyah)
+            {
+                if (arabicCharacters.Contains(ch)|| ch == ' ') filteredAyah += ch;
+                else if (tashkelMap.ContainsKey(ch)) filteredAyah += tashkelMap[ch];
+               
+            }
+
+            return filteredAyah;
+        }
+        private MistakeDTO CheckAgainstQuranicText(string recitedAyah,int surahNum,int ayahNum)
+        {
+            string originalAyah = _quranService.GetAyahBySurahAndNumber(surahNum, ayahNum);
+            string filteredAyah = FilterAyah(originalAyah);
+
+            MistakeDTO mistakeDTO = new MistakeDTO();
+            mistakeDTO.RecitedAyah = recitedAyah;
+            mistakeDTO.OriginalAyah = filteredAyah;
+      
+            string[] filteredAyahArray = filteredAyah.Split(' ');
+            string[] recitedAyahArray = recitedAyah.Split(' ');
+            //because its arabic words
+            filteredAyah.Reverse();
+            recitedAyahArray.Reverse();
+            //min value to make the compare between all the words
+            //and the remains of recited will be negative
+            int size = Math.Min(filteredAyahArray.Length, recitedAyahArray.Length);
+            mistakeDTO.Errors = new Dictionary<string, bool>();
+            bool isMistakeFound=false;
+            double numOfCorrect = 0;
+            int i=0;
+            for (; i < size; i++)
+            {
+                if (recitedAyahArray[i].Equals(filteredAyahArray[i]))
+                {
+                    mistakeDTO.Errors.Add(recitedAyahArray[i], true);
+                    numOfCorrect++;
+                } 
+                else
+                {
+                    mistakeDTO.Errors.Add(recitedAyahArray[i], false);
+                    if (!isMistakeFound)
+                    {
+                        isMistakeFound = true;
+                        mistakeDTO.IsCorrect = false;
+                    }
+                }
+                   
+            }
+            //the  remaing of recited if remain 
+            for (; i < recitedAyahArray.Length; i++)
+            {
+                    mistakeDTO.Errors.Add(recitedAyahArray[i] , false);
+                    if (!isMistakeFound)
+                    {
+                        isMistakeFound = true;
+                        mistakeDTO.IsCorrect = false;
+                    }
+            }
+            mistakeDTO.percentage = (numOfCorrect / Convert.ToDouble(recitedAyahArray.Length)) * 100;
+            return mistakeDTO;
+        }
+        
     }
 }

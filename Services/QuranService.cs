@@ -17,10 +17,10 @@ namespace Al_Maqraa.Services
             return _quranData?.FirstOrDefault(s => s.id == number);
         }
 
-        public Ayah? GetAyahBySurahAndNumber(int surahNumber, int ayahNumber)
+        public string? GetAyahBySurahAndNumber(int surahNumber, int ayahNumber)
         {
             var surah = GetSurahByNumber(surahNumber);
-            return surah?.array.FirstOrDefault(a => a.id== ayahNumber);
+            return surah?.array.FirstOrDefault(a => a.id== ayahNumber).ar;
         }
     }
 }
