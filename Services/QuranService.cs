@@ -8,7 +8,7 @@ namespace Al_Maqraa.Services
         public List<Surah>? _quranData { get; set; }    
         public QuranService()
         {
-            var jsonData = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Data/quran.json"));
+            var jsonData = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Data/Quran.json"));
             _quranData = JsonConvert.DeserializeObject<List<Surah>>(jsonData);
         }
 
