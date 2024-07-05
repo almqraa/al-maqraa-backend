@@ -57,19 +57,25 @@ namespace Al_Maqraa.Controllers
             {
                 // Decode base64 string to binary data
                 byte[] audioBytes = Convert.FromBase64String(reciteDTO.Base64);
-
-                // Send the binary data to the Huggingface API
-                var response = await SendToHuggingfaceApi(audioBytes);
-                if (response == null)
+                string convertedText="";
+                if (reciteDTO.ModelNum == 0)
                 {
-                    return StatusCode(500, "An error occurred while processing the audioo.");
+                    // Send the binary data to the Huggingface API
+                    var response = await SendToHuggingfaceApi(audioBytes);
+                    if (response == null)
+                    {
+                        return StatusCode(500, "An error occurred while processing the audioo.");
+                    }
+                    // Extract text from the response
+                    convertedText = response["text"]?.ToString();
                 }
-
-                // Extract text from the response
-                string convertedText = response["text"]?.ToString();
-
+                else if(reciteDTO.ModelNum == 1)
+                {
+                    // Convert audio data to text
+                    convertedText = await _speechToTextService.ConvertToText(reciteDTO.Base64);
+                }
                 // Check the converted text against the Quranic text
-                MistakeDTO matchingWords = CheckAgainstQuranicText(convertedText,reciteDTO.SurahNum,reciteDTO.ayahNum);
+                MistakeDTO matchingWords = CheckAgainstQuranicText(convertedText,reciteDTO.SurahNum,reciteDTO.AyahNum);
 
                 //return Ok(new { Text = convertedText, IsMatching = isMatching ,Size=isMatching.Length });
                 return Ok(matchingWords);
