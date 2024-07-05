@@ -54,7 +54,7 @@ namespace Al_Maqraa.Controllers
         public async Task<IActionResult> ReciteFromAudio(ReciteDTO reciteDTO)
         {
             try
-            {//
+            {
                 // Decode base64 string to binary data
                 byte[] audioBytes = Convert.FromBase64String(reciteDTO.Base64);
                 string convertedText="";
