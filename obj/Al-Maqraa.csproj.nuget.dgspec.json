@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\Al-Maqraa.csproj": {}
+    "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj": {}
   },
   "projects": {
-    "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\Al-Maqraa.csproj": {
+    "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\Al-Maqraa.csproj",
+        "projectUniqueName": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj",
         "projectName": "Al-Maqraa",
-        "projectPath": "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\Al-Maqraa.csproj",
+        "projectPath": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj",
         "packagesPath": "C:\\Users\\sigma\\.nuget\\packages\\",
-        "outputPath": "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\obj\\",
+        "outputPath": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sigma\\AppData\\Roaming\\NuGet\\NuGet.Config",

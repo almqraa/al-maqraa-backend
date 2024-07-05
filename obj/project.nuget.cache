@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PLAKFA3Jp43hD/2XTKjg880OBjBefvoaTtl25e4Tgs/vcyab2SU51giiNa1qGPjp76YDKsjmNgqwsv1NgDH6dw==",
+  "dgSpecHash": "9yyCIrxNxxzdy2DRx2G1qKT/M/ZIP18vq2HlnYnIK2P5c2h0cpjQC5O0AU5OALGUfyyRpBr2svuta/GlB8t5mQ==",
   "success": true,
-  "projectFilePath": "F:\\GP\\BackEnd\\copy2\\al-maqraa-backend\\Al-Maqraa.csproj",
+  "projectFilePath": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sigma\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\sigma\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
