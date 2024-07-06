@@ -2,6 +2,6 @@
 {
     public class SpeechToTextResponse
     {
-        public string text { get; set; }
+        public string transcription { get; set; }
     }
 }
