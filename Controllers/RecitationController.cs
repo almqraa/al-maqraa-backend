@@ -55,8 +55,11 @@ namespace Al_Maqraa.Controllers
         {
             try
             {//ff
+                var memoryStream = new MemoryStream();
+                await reciteDTO.file.CopyToAsync(memoryStream);
+                var audioBytes = memoryStream.ToArray();
                 // Decode base64 string to binary data
-                byte[] audioBytes = Convert.FromBase64String(reciteDTO.Base64);
+                //byte[] audioBytes = Convert.FromBase64String(reciteDTO.file.FileName);
                 string convertedText="";
                 if (reciteDTO.ModelNum == 0)
                 {
@@ -72,7 +75,7 @@ namespace Al_Maqraa.Controllers
                 else if(reciteDTO.ModelNum == 1)
                 {
                     // Convert audio data to text
-                    convertedText = await _speechToTextService.ConvertToText(reciteDTO.Base64);
+                    //convertedText = await _speechToTextService.ConvertToText(reciteDTO.Base64);
                 }
                 // Check the converted text against the Quranic text
                 MistakeDTO matchingWords = CheckAgainstQuranicText(convertedText,reciteDTO.SurahNum,reciteDTO.AyahNum);
