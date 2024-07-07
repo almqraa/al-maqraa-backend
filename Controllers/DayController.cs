@@ -135,7 +135,7 @@ namespace Al_Maqraa.Controllers
         public async Task<IActionResult> GetUserByDayId(int dayId)
         {
   
-            // Retrieve the user associated with the statistic
+            // Retrieve the user associated with the day
              var user = await _service.GetUserByDayId(dayId);
             //Day statistic = await _context.Day.Include(s =>s.User).FirstOrDefaultAsync(ss =>ss.Id==statisticId);
             //var user = statistic.User;

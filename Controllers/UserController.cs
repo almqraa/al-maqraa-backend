@@ -27,12 +27,12 @@ namespace Al_Maqraa.Controllers
             _emailSender = emailSender;
         }
 
-        [HttpGet("send")]
-        public async Task<IActionResult> send(string email)
-        {
-            await _emailSender.SendEmailAsync(email, "Confirm your email", $" $\"Please confirm your account by clicking this <a href='{{callbackUrl}}'>link</a>.\"");
-            return Ok("ok");
-        }
+        //[HttpGet("send")]
+        //public async Task<IActionResult> send(string email)
+        //{
+        //    await _emailSender.SendEmailAsync(email, "Confirm your email", $" $\"Please confirm your account by clicking this <a href='{{callbackUrl}}'>link</a>.\"");
+        //    return Ok("ok");
+        //}
   
         [HttpGet("confirmemail")]
         public async Task<IActionResult> ConfirmEmail(string token, string email)

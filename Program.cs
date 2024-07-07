@@ -1,10 +1,26 @@
 using Al_Maqraa;
 using Al_Maqraa.Services;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 524288000; // 400 MB in bytes
+});
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.Limits.MaxRequestBodySize = 524288000; // 500 MB
+
+});
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = 524288000; // 500 MB
+
+});
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
@@ -26,7 +42,6 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddTransient<IEmailSender, EmailSender>();
-
 builder.Services.AddScoped<AlMaqraaDB>();
 builder.Services.AddScoped<SurahService>();
 builder.Services.AddScoped<AyahService>();
