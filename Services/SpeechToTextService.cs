@@ -10,7 +10,7 @@ namespace Al_Maqraa.Services
         private readonly HttpClient _httpClient;
         private readonly string _pythonApiUrl;
 
-        public SpeechToTextService(HttpClient httpClient, string pythonApiUrl= "https://3d60-193-227-11-118.ngrok-free.app/transcribe")
+        public SpeechToTextService(HttpClient httpClient, string pythonApiUrl= "http://cnn-transcribe-api.eastus.azurecontainer.io:8000/transcribe")
         {
 
             //connection will be opened here with socket flask
@@ -21,7 +21,7 @@ namespace Al_Maqraa.Services
         public async Task<string> ConvertToText(string audioData)
         {
             // Convert byte array to base64 string
-           // string base64Audio = Convert.ToBase64String(audioData);
+            // string base64Audio = Convert.ToBase64String(audioData);
 
             // Prepare request body
             var requestBody = new

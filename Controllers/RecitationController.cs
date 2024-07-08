@@ -3,6 +3,7 @@ using Al_Maqraa.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.Composition;
 using System.Net.Http.Headers;
 
 namespace Al_Maqraa.Controllers
@@ -55,6 +56,14 @@ namespace Al_Maqraa.Controllers
         {
             try
             {//ff
+
+                /*string fileName = Path.GetFileName(reciteDTO.file.FileName);
+                string path = Path.Combine("wwwroot/assets/", Guid.NewGuid().ToString() + fileName);
+                using (FileStream fs = System.IO.File.Create(path))
+                {
+                    reciteDTO.file.CopyTo(fs);
+                }*/
+
                 var memoryStream = new MemoryStream();
                 await reciteDTO.file.CopyToAsync(memoryStream);
                 var audioBytes = memoryStream.ToArray();
@@ -74,8 +83,9 @@ namespace Al_Maqraa.Controllers
                 }
                 else if(reciteDTO.ModelNum == 1)
                 {
+                    string base64Audio = Convert.ToBase64String(audioBytes);
                     // Convert audio data to text
-                    //convertedText = await _speechToTextService.ConvertToText(reciteDTO.Base64);
+                    convertedText = await _speechToTextService.ConvertToText(base64Audio);
                 }
                 // Check the converted text against the Quranic text
                 MistakeDTO matchingWords = CheckAgainstQuranicText(convertedText,reciteDTO.SurahNum,reciteDTO.AyahNum);
@@ -94,7 +104,7 @@ namespace Al_Maqraa.Controllers
         {
             using (var content = new ByteArrayContent(audioBytes))
             {
-                content.Headers.ContentType = new MediaTypeHeaderValue("audio/flac");
+                content.Headers.ContentType = new MediaTypeHeaderValue("audio/wav");
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_TOKEN);
 
                 var response = await client.PostAsync(API_URL, content);
@@ -122,12 +132,19 @@ namespace Al_Maqraa.Controllers
             string originalAyah = _quranService.GetAyahBySurahAndNumber(surahNum, ayahNum);
             string filteredAyah = FilterAyah(originalAyah);
 
+            string[] filteredAyahArray = filteredAyah.Split(' ');
+            string[] recitedAyahArray = recitedAyah.Split(' ');
+          
+            for(int j=0; j < filteredAyahArray.Length; j++)
+            {
+                if (filteredAyahArray[j].Equals("الرَّحْمَانِ")) filteredAyahArray[j] = "الرَّحْمَنِ";
+            }
+            filteredAyah = String.Join(" ", filteredAyahArray);
             MistakeDTO mistakeDTO = new MistakeDTO();
             mistakeDTO.RecitedAyah = recitedAyah;
             mistakeDTO.OriginalAyah = filteredAyah;
       
-            string[] filteredAyahArray = filteredAyah.Split(' ');
-            string[] recitedAyahArray = recitedAyah.Split(' ');
+           
             //because its arabic words
             filteredAyah.Reverse();
             recitedAyahArray.Reverse();
