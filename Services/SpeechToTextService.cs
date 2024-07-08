@@ -39,7 +39,7 @@ namespace Al_Maqraa.Services
             {
                 string result = await response.Content.ReadAsStringAsync();
                 var responseObject = JsonSerializer.Deserialize<SpeechToTextResponse>(result);
-                string text = responseObject?.transcription ?? "";
+                string text = responseObject?.transcription[0] ?? "";
                 return text;
             }
             else
