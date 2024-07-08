@@ -137,7 +137,7 @@ namespace Al_Maqraa.Controllers
           
             for(int j=0; j < filteredAyahArray.Length; j++)
             {
-                if (filteredAyahArray[j].Equals("الرَّحْمَانِ")) filteredAyahArray[j] = "الرَّحْمَنِ";
+                if (filteredAyahArray[j].Equals("الرَّحْمَانُ") || filteredAyahArray[j].Equals("الرَّحْمَانِ")) filteredAyahArray[j] = "الرَّحْمَنِ";
             }
             filteredAyah = String.Join(" ", filteredAyahArray);
             MistakeDTO mistakeDTO = new MistakeDTO();
