@@ -10005,19 +10005,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sigma\\.nuget\\packages\\": {}
+    "C:\\Users\\GEMY\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj",
+      "projectUniqueName": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
       "projectName": "Al-Maqraa",
-      "projectPath": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\Al-Maqraa.csproj",
-      "packagesPath": "C:\\Users\\sigma\\.nuget\\packages\\",
-      "outputPath": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\obj\\",
+      "projectPath": "G:\\GP\\Backend\\Al-Maqraa\\Al-Maqraa.csproj",
+      "packagesPath": "C:\\Users\\GEMY\\.nuget\\packages\\",
+      "outputPath": "G:\\GP\\Backend\\Al-Maqraa\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\sigma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\GEMY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10025,6 +10030,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10123,7 +10129,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
