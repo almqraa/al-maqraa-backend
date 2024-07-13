@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\assets\\97572668.jpeg"
     },
     {
+      "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Al-Maqraa - Copy.png",
+      "PackagePath": "staticwebassets\\assets\\Al-Maqraa - Copy.png"
+    },
+    {
+      "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Al-Maqraa.png",
+      "PackagePath": "staticwebassets\\assets\\Al-Maqraa.png"
+    },
+    {
       "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Farah.jpg",
       "PackagePath": "staticwebassets\\assets\\Farah.jpg"
     },
@@ -31,14 +39,6 @@
     {
       "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Media1.mp4",
       "PackagePath": "staticwebassets\\assets\\Media1.mp4"
-    },
-    {
-      "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Omar.jpg",
-      "PackagePath": "staticwebassets\\assets\\Omar.jpg"
-    },
-    {
-      "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Omar1.jpeg",
-      "PackagePath": "staticwebassets\\assets\\Omar1.jpeg"
     },
     {
       "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\Omar2.jpg",
