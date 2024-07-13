@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rMvnEQ1Rlwi9i+i4vvTt5/owchRoBN/t4HMlDnzxMdE=",
+  "Hash": "+XfAvltg+t/SIEmfmzwMskA8fq7mUeXvI8UDi6Jjr5E=",
   "Source": "Al-Maqraa",
   "BasePath": "_content/Al-Maqraa",
   "Mode": "Default",
@@ -1630,6 +1630,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ResetPassword.html"
+    },
+    {
+      "Identity": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\SendEmailReset.html",
+      "SourceId": "Al-Maqraa",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\",
+      "BasePath": "_content/Al-Maqraa",
+      "RelativePath": "SendEmailReset.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\SendEmailReset.html"
     },
     {
       "Identity": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\test.html",

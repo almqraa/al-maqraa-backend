@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\ResetPassword.html"
     },
     {
+      "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\SendEmailReset.html",
+      "PackagePath": "staticwebassets\\SendEmailReset.html"
+    },
+    {
       "Id": "F:\\GP\\BackEnd\\copy3\\al-maqraa-backend\\wwwroot\\assets\\97572668.jpeg",
       "PackagePath": "staticwebassets\\assets\\97572668.jpeg"
     },
