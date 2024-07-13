@@ -59,8 +59,8 @@
                         <h1 class="display-1 lh-1 mb-3">Al-Maqraa</h1>
                         <p class="lead fw-normal text-muted mb-5">Al-Maqraa, designed to aid Muslims in Quranic learning and focuses on improving pronunciation and memorization accuracy</p>
                         <div class="d-flex flex-column flex-lg-row align-items-center">
-                            <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="~/assets/img/google-play-badge.svg" alt="..." /></a>
-                            <a href="#!"><img class="app-badge" src="~/assets/img/app-store-badge.svg" alt="..." /></a>
+                            <a class="me-lg-3 mb-4 mb-lg-0" href="https://drive.google.com/uc?export=download&id=17Zwn9JJVWCoBQyYplSGewYw633ZFRBMp"><img width="200px" height="200px" class="app-badge" src="~/assets/img/apk-badge.png" alt="..." /></a>
+                            
                         </div>
                     </div>
                 </div>
@@ -190,8 +190,38 @@
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
                 <div class="col-12 col-lg-5">
-                    <h2 class="display-4 lh-1 mb-4"> </h2>
-                    <p class="lead fw-normal text-muted mb-5 mb-lg-0"> </p>
+                    <h2 class="display-4 lh-1 mb-4">AI Approch</h2>
+                    <h2>TDNN Speech Recognition Model with CTC</h2>
+                    <h3>Overview</h3>
+                    <p>
+                        Time Delay Neural Networks (TDNN) are a cornerstone in traditional and hybrid speech recognition systems. Combining TDNNs with Convolutional Neural Networks (CNN) has led to state-of-the-art results in end-to-end speech recognition. One such model, Jasper (Just Another SPEech Recognizer), developed by NVIDIA in 2019, utilizes Connectionist Temporal Classification (CTC) loss and a block architecture with convolutional sub-blocks and residual connections. This innovative structure enhances data flow efficiency compared to traditional sequential models.
+                    </p>
+                    <h3>Jasper and QuartzNet</h3>
+                    <p>
+                        Jasper set benchmarks in English speech recognition but demanded significant computational resources due to its 200+ million parameters. To address this, QuartzNet was introduced as a leaner version, retaining Jasper's architecture but incorporating depthwise separable convolutions. These convolutions reduce computational complexity and improve efficiency by separating spatial and depth dimensions, thus optimizing the model's performance.
+                    </p>
+                    <h3>Application to Classic Arabic Speech</h3>
+                    <p>
+                        In our project, QuartzNet is applied to recognize classic Arabic speech, marking its pioneering use in this context. The model's architecture includes an encoder with 15 repeated blocks and a linear decoder that maps output probabilities to character sequences using CTC loss. The Novograd optimization method ensures efficient training by normalizing gradients and decoupling weight decay.
+                    </p>
+
+                    <h2>RNN Speech Recognition Model with CTC</h2>
+                    <h3>Overview</h3>
+                    <p>
+                        Recurrent Neural Networks (RNN) are pivotal in end-to-end speech recognition, converting audio spectrograms into text. The Deep Speech model exemplifies this with a mix of non-recurrent and recurrent layers, but it struggles with extensive datasets.
+                    </p>
+                    <h3>Deep Speech 2 Enhancements</h3>
+                    <p>
+                        Deep Speech 2 improves upon this with multiple CNN and RNN layers, achieving the lowest Word Error Rate (WER) among similar models. Our RNN-CTC model, inspired by Deep Speech 2, features an encoder with four CNN layers, five Bidirectional GRU (BiGRU) layers, and a fully connected layer. This architecture balances feature extraction and frame prediction while being computationally efficient.
+                    </p>
+                    <h3>Optimization</h3>
+                    <p>
+                        The AdamW optimization method, a variant of Adam that decouples weight decay from gradient updates, is employed to enhance model convergence and performance.
+                    </p>
+
+                    <p>
+                        These models represent significant advancements in speech recognition technology, demonstrating robust performance in various applications.
+                    </p>
                 </div>
                 <div class="col-sm-8 col-md-6">
                     <div class="px-5 px-sm-0"><img class="img-fluid rounded-circle" src="~/assets/logo.png" alt="..." /></div>
@@ -209,7 +239,7 @@
                 <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
                     <div class="card">
                         <div class="team-image-wrapper">
-                            <img class="team-member-image" src="~/assets/Omar1.jpeg">
+                            <img class="team-member-image" src="~/assets/Omar2.jpg">
                         </div>
                         <p class="text-blk name">
                             Omar Walid
@@ -221,25 +251,6 @@
 
                         </p>
                         <a href="https://www.linkedin.com/in/omar-walid1/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
-                    <div class="card">
-                        <div class="team-image-wrapper">
-                            <img class="team-member-image" src="~/assets/Gemy.jpeg">
-                        </div>
-                        <p class="text-blk name">
-                            Mohamed Gamal
-                        </p>
-                        <p class="text-blk position">
-                            Software Engineer
-                        </p>
-                        <p class="text-blk feature-text">
-
-                        </p>
-                        <a href="https://www.linkedin.com/in/mohamed-gamal2030/" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -263,6 +274,26 @@
                         </a>
                     </div>
                 </div>
+                <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
+                    <div class="card">
+                        <div class="team-image-wrapper">
+                            <img class="team-member-image" src="~/assets/Gemy.jpeg">
+                        </div>
+                        <p class="text-blk name">
+                            Mohamed Gamal
+                        </p>
+                        <p class="text-blk position">
+                            Software Engineer
+                        </p>
+                        <p class="text-blk feature-text">
+
+                        </p>
+                        <a href="https://www.linkedin.com/in/mohamed-gamal2030/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
                     <div class="card">
                         <div class="team-image-wrapper">
@@ -291,7 +322,7 @@
                             Ahmed Sallam
                         </p>
                         <p class="text-blk position">
-                            Software Engineer
+                            Machine Learning Engineer
                         </p>
                         <p class="text-blk feature-text">
 
@@ -304,13 +335,70 @@
             </div>
         </div>
     </section>
+    <!-- =supervisors section-->
+    <section id="ourteam">
+        <div class="responsive-container-block container">
+            <p class="text-blk team-head-text">
+                Our supervisors
+            </p>
+            <div class="responsive-container-block">
+                <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
+                    <div class="card">
+                       @*  <div class="team-image-wrapper">
+                            <img class="team-member-image" src="assets/Omar1.jpeg">
+                        </div> *@
+                        <p class="text-blk name">
+                            <b>Dr. Hanaa Bayomi</b>
+                        </p>
+                        <p class="text-blk position">
+                            Assistant Professor</br>
+                            Computer Science Department</br>
+                            Faculty of Computers and Artificial Intelligence</br>
+                            Cairo University
+                        </p>
+                        <p class="text-blk feature-text">
+
+                        </p>
+                        <a href="mailto:h.mobarz@fci-cu.edu.eg" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                            h.mobarz@fci-cu.edu.eg
+                        </a>
+                    </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
+                    <div class="card">
+                       @*  <div class="team-image-wrapper">
+                            <img class="team-member-image" src="assets/logo.png">
+                        </div> *@
+                        <p class="text-blk name">
+                            <b>Amany M. Hesham</b>
+                        </p>
+                        <p class="text-blk position">
+                            Assistant Lecturer </br>
+                            Computer Science Department</br>
+                            Faculty of Computers and Artificial Intelligence</br>
+                            Cairo University
+                        </p>
+                        <p class="text-blk feature-text">
+
+                        </p>
+                        <a href="mailto:amany@fci-cu.edu.eg" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                            amany@fci-cu.edu.eg
+                        </a>
+                       
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </section>
     <!-- App badge section-->
     <section class="bg-gradient-primary-to-secondary" id="download">
         <div class="container1 px-5">
             <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
-                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="~/assets/img/google-play-badge.svg" alt="..." /></a>
-                <a href="#!"><img class="app-badge" src="~/assets/img/app-store-badge.svg" alt="..." /></a>
+                <a class="me-lg-3 mb-4 mb-lg-0" href="https://drive.google.com/uc?export=download&id=17Zwn9JJVWCoBQyYplSGewYw633ZFRBMp"><img width="200px" height="200px" class="app-badge" src="~/assets/img/apk-badge.png" alt="..." /></a>
             </div>
         </div>
     </section>
