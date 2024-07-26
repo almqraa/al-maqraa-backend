@@ -189,7 +189,7 @@
     <section class="bg-light">
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
-                <div class="col-12 col-lg-5">
+                <div class="col-12 ">
                     <h2 class="display-4 lh-1 mb-4">AI Approch</h2>
                     <h2>TDNN Speech Recognition Model with CTC</h2>
                     <h3>Overview</h3>
@@ -223,15 +223,12 @@
                         These models represent significant advancements in speech recognition technology, demonstrating robust performance in various applications.
                     </p>
                 </div>
-                <div class="col-sm-8 col-md-6">
-                    <div class="px-5 px-sm-0"><img class="img-fluid " src="~/assets/Al-Maqraa - Copy.png" alt="..." /></div>
-                </div>
             </div>
         </div>
     </section>
     <!-- our team-->
     <section id="ourteam">
-        <div class="responsive-container-block container">
+        <div class="responsive-container-block container" id="team-members">
             <p class="text-blk team-head-text">
                 Our Team
             </p>
@@ -254,6 +251,10 @@
                             &nbsp;&nbsp;
                             <a href="mailto:om.walid2003@gmail.com" target="_blank" class="fa fa-envelope">
                                 
+                            </a>
+                            &nbsp;&nbsp;
+                            <a href="https://drive.google.com/file/d/1OUfUZK4jXZpNFg__gqttXxJJPtbjRamM/view?usp=sharing" target="_blank">
+                                <b>CV</b>
                             </a>
                         </p>
                        
@@ -428,7 +429,14 @@
     <footer class="bg-black text-center py-5">
         <div class="container px-5">
             <div class="text-white-50 small">
-                <div class="mb-2">Social media</div>
+                <div class="mb-2">Contact US</div><br />
+
+                <p>
+                    <a href="mailto:amany@fci-cu.edu.eg" target="_blank">
+                        <i class="fa fa-envelope"></i>&nbsp;&nbsp; almqraa66@gmail.com
+                    </a>
+                </p>
+                <p><i class="fa fa-phone"></i>&nbsp;&nbsp; +201551552164</p>
             </div>
         </div>
     </footer>
@@ -464,6 +472,33 @@
             </div>
         </div>
     </div>
+    <!-- to random team members-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById('team-members');
+            const teamMembers = Array.from(container.getElementsByClassName('card-container'));
+
+            // Shuffle function
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Shuffle team members
+            const shuffledTeamMembers = shuffle(teamMembers);
+
+            // Clear existing team members
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
+            // Append shuffled team members
+            shuffledTeamMembers.forEach(member => container.appendChild(member));
+        });
+    </script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
